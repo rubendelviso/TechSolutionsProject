@@ -1,0 +1,6 @@
+idVenta;tipoVenta;producto;categoria;cantidad;precioUnitario;costoUnitario;vendedor;zona
+1;EFECTIVO;Mouse Logitech;Accesorios;10;25000;12000;Gomez;Sur
+2;TARJETA;Notebook Lenovo;Computacion;2;850000;620000;Martinez;Norte
+3;TRANSFERENCIA;Monitor Samsung;Computacion;3;320000;210000;Lopez;Centro
+4;TARJETA;Teclado Redragon;Accesorios;5;45000;25000;Martinez;Norte
+5;EFECTIVO;Notebook HP;Computacion;1;920000;700000;Gomez;Sur
