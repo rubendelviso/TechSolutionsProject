@@ -22,4 +22,6 @@ public interface IGestionVentas {
 	void contarVentasCategoria();//cuantas hay en cada categoria
 	//ILecturaVenta retornarInstancia();
 	List<Vendedor> retornarVendedores();
+	void mostrarVentasRevisar();
+	void ContarVentasRevisar();
 }

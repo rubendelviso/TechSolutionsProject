@@ -6,12 +6,17 @@ public class Vendedor {
 	private String nombre;
 	private Double ganancia;
 	private Double Comision;
+	private Double facturacion;
+	private int cantVentas;
 
-	public Vendedor(int idVendedor, String nombre, Double ganancia) {
+	public Vendedor(int idVendedor, String nombre, Double ganancia,
+			Double facturacion,int cantVentas) {
 		super();
 		this.idVendedor = idVendedor;
 		this.nombre = nombre;
 		this.ganancia = ganancia;
+		this.facturacion = facturacion;
+		this.cantVentas =cantVentas;
 	}
 	public int getIdVendedor() {
 		return idVendedor;
@@ -37,8 +42,22 @@ public class Vendedor {
 	public void setComision(Double comision) {
 		Comision = comision;
 	}
+	public Double getFacturacion() {
+		return facturacion;
+	}
+	public int getCantVentas() {
+		return cantVentas;
+	}
+	public void setFacturacion(Double facturacion) {
+		this.facturacion = facturacion;
+	}
+	public void setCantVentas(int cantVentas) {
+		this.cantVentas = cantVentas;
+	}
 	@Override
 	public String toString() {
-		return "Vendedor [idVendedor=" + idVendedor + ", nombre=" + nombre + ", ganancia=" + ganancia +"Comision="+ Comision +"]";
+		return "Vendedor [idVendedor=" + idVendedor +
+				", nombre=" + nombre + ", ganancia=" + ganancia +"Comision="+
+				Comision +"Cantidad de Ventas"+cantVentas+"]";
 	}
 }

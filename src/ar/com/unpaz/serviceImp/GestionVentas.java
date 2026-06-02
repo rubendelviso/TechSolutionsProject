@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import ar.com.unpaz.models.Vendedor;
 import ar.com.unpaz.models.Venta;
@@ -17,6 +18,7 @@ public class GestionVentas implements IGestionVentas{
 	List<Venta> ventasRiesgosas;
 	List<Venta> ventasNormales;
 	List<Venta> ventasRentables;
+	List<Venta> ventasAlertas;
 	ILecturaVenta lecturaService;
 	
 	public GestionVentas() {
@@ -37,8 +39,56 @@ public class GestionVentas implements IGestionVentas{
 			if(CalculoMargen<10)ventasRiesgosas.add(venta);
 			else if(CalculoMargen>10 && CalculoMargen<25)ventasNormales.add(venta);
 			else ventasRentables.add(venta);
+			
+			//Meto logica de Alertas Comerciales
+			
+			
+			
+			//Cuando una venta tiene perdidas -> importeTotal >= costoUnitario * cantidad
+			
+			//Margen menor al 10 -> clasificado dentro de normal
+			//if(venta.getGanancia())
+			
 		
 		}
+		AlertasComerciales();
+
+	}
+	
+	public void AlertasComerciales() {
+		
+		ventasAlertas = listaDeVentas.stream().filter(v->CantidadVendida(v) || ChequarPerdidas(v) 
+				|| ChequarImporGananc(v)||margenMenor(v)).collect(Collectors.toList());
+		
+		ventasAlertas.stream().forEach(v->v.setAlertaComercial("VENTA A REVISAR"));
+		
+/*.filter(ven->ChequarPerdidas(ven))
+		.filter(ven-> ventasNormales.contains(ven))
+		.filter(ven-> ChequarImporGananc(ven))
+		.filter(ven->CantidadVendida(ven));
+*/		
+		
+	}
+	
+	public Boolean margenMenor(Venta venta) {
+		Double costoCalculado = venta.getCostoUnitario()*venta.getCantidad();
+		Double CalculoMargen = ((venta.getImporteTotal()-costoCalculado)/venta.getImporteTotal())*100;
+		return(CalculoMargen<15); 
+		
+	}
+	public Boolean CantidadVendida(Venta ventaRecibida){
+		
+		
+		return(listaDeVentas.stream().filter(ven-> ventaRecibida == ven).count()>10);
+		
+		
+	}
+	public Boolean ChequarPerdidas(Venta ventaRecibida) {
+		return (ventaRecibida.getImporteTotal()>ventaRecibida.getCostoUnitario()*ventaRecibida.getCantidad());
+	}
+	
+	public Boolean ChequarImporGananc(Venta ventaRecibida) {
+		return(ventaRecibida.getImporteTotal()>1000000 && ventaRecibida.getGanancia()<100000);
 		
 	}
 	@Override
@@ -129,6 +179,18 @@ public class GestionVentas implements IGestionVentas{
 		// TODO Auto-generated method stub
 		List<Vendedor> listaRetornar = lecturaService.RetornarListaVendedores();
 		return listaRetornar;
+		
+	}
+
+	@Override
+	public void mostrarVentasRevisar() {
+		ventasAlertas.stream().forEach(ve->System.out.println(ve));
+		
+	}
+
+	@Override
+	public void ContarVentasRevisar() {
+		System.out.println(ventasAlertas.stream().count());
 		
 	}
 	

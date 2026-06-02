@@ -16,19 +16,20 @@ public class Inicio {
 		//Hacer toda la inyeccion de dependencias desde aca
 		//Instancio Gestion Vendedores -> lo paso a ventas
 		// ->Retorna la lista de ventas
-		// TODO Auto-generated method stub
-		System.out.println("Holaa");
 		
 		IGestionVentas gestion = new GestionVentas();
+		
+		//System.out.println("a");
 		List<Venta> listaRetor = gestion.retornarListaCompleta();
 		List<Vendedor> listaVenRetorn = gestion.retornarVendedores();
 		
 		IGestionVendedor gestionVendedor = new GestionVendedor(listaRetor,listaVenRetorn);
-		//List<Venta>Lista = gestion.retornarListaCompleta();
+		List<Venta>Lista = gestion.retornarListaCompleta();
 		//System.out.println(Lista);
 		//System.out.println(gestion.retornarListaCompleta());
-		gestionVendedor.MayorComision();
-		
+		gestionVendedor.mostrarVendedores();
+		//gestionVendedor.MayorComision();
+		//gestion.mostrarVentasRevisar();
 	
 	}
 

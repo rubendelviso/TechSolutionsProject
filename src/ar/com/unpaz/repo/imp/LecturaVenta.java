@@ -77,12 +77,14 @@ private List<Vendedor> listaDeVendedores;
 					throw new IllegalArgumentException("Unexpected value: " );
 				}
 				Ganancia = totalVenta-(costoUnitario*cantidad);
-				Vendedor vendedorNuevo = new Vendedor(idVenta, partes[7],0.0);
+				Vendedor vendedorNuevo = new Vendedor(idVenta, partes[7],0.0, 0.0,0);
 				
 				Venta ventaNueva = new Venta(categoria,idVenta,ventaRecibida,producto,cantidad,precioUnitario,
-						costoUnitario,vendedorNuevo,zona,totalVenta,Ganancia,importeBruto);
+						costoUnitario,vendedorNuevo,zona,totalVenta,Ganancia,importeBruto,"");
 				listaDeVentas.add(ventaNueva);
-				listaDeVendedores.add(vendedorNuevo);
+				
+				if(!(listaDeVendedores.contains(vendedorNuevo)))
+						{listaDeVendedores.add(vendedorNuevo);}
 				
 			
 				

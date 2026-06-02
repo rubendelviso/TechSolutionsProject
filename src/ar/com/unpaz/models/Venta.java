@@ -14,10 +14,11 @@ public class Venta {
 	private Double ImporteTotal;
 	private Double Ganancia;
 	private Double importeBruto;
+	private String alertaComercial;
 	
 	public Venta(String categoria, int idVenta, TipoVenta objetoVenta, String objetoProducto,
 			int cantidad,Double precioUnitario, Double costoUnitario, Vendedor vendedor, String zona, 
-			Double importeTotal,Double Ganancia,Double importeBruto) {
+			Double importeTotal,Double Ganancia,Double importeBruto,String alertaComercial) {
 		super();
 		Categoria = categoria;
 		this.idVenta = idVenta;
@@ -31,13 +32,14 @@ public class Venta {
 		this.ImporteTotal = importeTotal;
 		this.Ganancia = Ganancia;
 		this.importeBruto = importeBruto;
+		this.alertaComercial = alertaComercial;
 	}
 	@Override
 	public String toString() {
 		return "Venta [Categoria=" + Categoria + ", idVenta=" + idVenta + ", objetoVenta=" + objetoVenta
 				+ ", objetoProducto=" + objetoProducto + ", Cantidad=" + Cantidad + ", precioUnitario=" + precioUnitario
 				+ ", costoUnitario=" + costoUnitario + ", Vendedor=" + Vendedor + ", Zona=" + Zona + ", ImporteTotal="
-				+ ImporteTotal + ", Ganancia=" + Ganancia + "Importe Bruto= "+ importeBruto+"]";
+				+ ImporteTotal + ", Ganancia=" + Ganancia + "Importe Bruto= "+ importeBruto+"Alerta Comercial="+alertaComercial+"]";
 	}
 	public String getCategoria() {
 		return Categoria;
@@ -111,5 +113,11 @@ public class Venta {
 	}
 	public void setVendedor(Vendedor vendedor) {
 		Vendedor = vendedor;
+	}
+	public String getAlertaComercial() {
+		return alertaComercial;
+	}
+	public void setAlertaComercial(String alertaComercial) {
+		this.alertaComercial = alertaComercial;
 	}
 }
